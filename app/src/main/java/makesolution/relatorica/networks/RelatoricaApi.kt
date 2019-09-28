@@ -4,7 +4,9 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
+import makesolution.relatorica.models.PruchaseModel
 import makesolution.relatorica.responses.LoginResponse
+import makesolution.relatorica.responses.PurchaseResponse
 import makesolution.relatorica.responses.StoreResponse
 
 class RelatoricaApi {
@@ -12,20 +14,28 @@ class RelatoricaApi {
         val baseUrl = "http://18.188.102.230/Relatorica"
         var historiaUrlGet = "$baseUrl/historiaapi/histories"
         val loginUrlPost = "$baseUrl/loginapi/logins/fathers"
+        val buyUrlPost = "$baseUrl/purchasesapi/purchases"
 
-        fun PostCompra(key: String, url: String,
-                       customerId: Int,
-                       responseHandler: (StoreResponse?)-> Unit, errorHandler: (ANError?) -> Unit)
+        fun PostCompra(key: String,
+                       url: String,
+                       padreId: Int,
+                       historiaId: Int,
+                       fechaCompra : String,
+                       costo: Double,
+                       responseHandler: (PurchaseResponse?)-> Unit, errorHandler: (ANError?) -> Unit)
         {
 
             AndroidNetworking.post(url)
                 .addHeaders("Authorization",key)
-                .addBodyParameter("prueba",customerId.toString())
+                .addBodyParameter("HistoriaId",historiaId.toString())
+                .addBodyParameter("PadreId",padreId.toString())
+                .addBodyParameter("FechaCompra",fechaCompra)
+                .addBodyParameter("Costo",costo.toString())
                 .setTag("RelatoricaApp")
                 .setPriority(Priority.MEDIUM)
                 .build()
-                .getAsObject(StoreResponse::class.java,object : ParsedRequestListener<StoreResponse> {
-                    override fun onResponse(response: StoreResponse?) {
+                .getAsObject(PurchaseResponse::class.java,object : ParsedRequestListener<PurchaseResponse> {
+                    override fun onResponse(response: PurchaseResponse?) {
                         responseHandler(response)
                     }
 
