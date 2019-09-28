@@ -1,12 +1,14 @@
 package makesolution.relatorica.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.card_store.view.*
 import makesolution.relatorica.R
+import makesolution.relatorica.activities.HistoryActivity
 import makesolution.relatorica.models.StoreModel
 
 
@@ -31,6 +33,7 @@ class StoreAdapter (var stores:ArrayList<StoreModel>, val context: Context): Rec
         val imagenANImageView = view.imageANImageView
         val nombreTextView = view.nameBookTextView
         val precioTextView = view.priceTextView
+        var storeCardView = view.storeCardView
 
         fun updateFrom(store: StoreModel){
             imagenANImageView.setDefaultImageResId(R.mipmap.ic_launcher)
@@ -38,6 +41,11 @@ class StoreAdapter (var stores:ArrayList<StoreModel>, val context: Context): Rec
             imagenANImageView.setImageUrl(store.Imagen)
             nombreTextView.text = store.Nombre
             precioTextView.text = "S/. " + store.Precio.toString()
+            storeCardView.setOnClickListener { view ->
+                val context = view.context
+                context.startActivity(Intent(context, HistoryActivity::class.java)
+                    .putExtras(store.toBundle()))
+            }
         }
     }
 

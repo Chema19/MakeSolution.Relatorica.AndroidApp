@@ -52,7 +52,7 @@ class StoreFragment : Fragment() {
 
         var url: String = RelatoricaApi.historiaUrlGet
 
-        RelatoricaApi.GetHistorias("Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkFkbWluIiwibmJmIjoxNTY5NjM3ODYwLCJleHAiOjE1Njk2Mzk2NjAsImlhdCI6MTU2OTYzNzg2MCwiaXNzIjoiaHR0cDovLzE4LjE4OC4xMDIuMjMwL1JlbGF0b3JpY2EvIiwiYXVkIjoiaHR0cDovLzE4LjE4OC4xMDIuMjMwL1JlbGF0b3JpY2EvIn0.hWjiS-URUukf0X8YZXfCvqAbqF3znhB-3sEGdJSryYQ", url,
+        RelatoricaApi.GetHistoriasNormalOrById("Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkFkbWluIiwibmJmIjoxNTY5NjUyNjQ4LCJleHAiOjE1Njk2NTk4NDgsImlhdCI6MTU2OTY1MjY0OCwiaXNzIjoiaHR0cDovLzE4LjE4OC4xMDIuMjMwL1JlbGF0b3JpY2EvIiwiYXVkIjoiaHR0cDovLzE4LjE4OC4xMDIuMjMwL1JlbGF0b3JpY2EvIn0.EPDCrTxOOITGuLxPYbja7_uGBw66acrbQb92qHe1qdc", url,
             { response -> handleResponse(response) },
             { error -> handleError(error)})
 
