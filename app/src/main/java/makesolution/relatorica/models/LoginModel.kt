@@ -1,5 +1,7 @@
 package makesolution.relatorica.models
 
-class LoginModel(val Credenciales: String, val Contrasenia: String) {
+data class LoginModel (
+    val Token: String,
+    val PersonId: Int) {
 
 }

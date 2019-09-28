@@ -1,5 +1,6 @@
 package makesolution.relatorica.activities
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -12,44 +13,39 @@ import makesolution.relatorica.responses.LoginResponse
 
 class LoginActivity : AppCompatActivity() {
 
-    private val STRING_PREFERENCE = "Session"
-    private val TOKEN = "Token"
-    private val NOMBREPROVIDER = "NombreProvider"
-    private val PROVIDERID = "ProviderId"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        var url: String = RelatoricaApi.loginUrlPost
+        startButton.setOnClickListener {
+            var url: String = RelatoricaApi.loginUrlPost
+            var usernameET = userEditText.text.toString()
+            var passwordET = passwordEditText.text.toString()
 
-        var usernameET = userEditText.text.toString()
-        var passwordET = passwordEditText.text.toString()
-
-        RelatoricaApi.PostLogin(url,usernameET,passwordET,
-            { response -> handleResponse(response) },
-            { error -> handleError(error)})
+            RelatoricaApi.PostLogin(url, usernameET, passwordET,
+                { response -> handleResponse(response) },
+                { error -> handleError(error) })
+        }
     }
     private fun handleResponse(response: LoginResponse?){
         if(true.equals(response!!.Error)){
             Log.d("Respuesta Falsa", response!!.Message)
             return
         }
-        var preferences : SharedPreferences = this.getSharedPreferences(STRING_PREFERENCE,MODE_PRIVATE)
+        var preferences : SharedPreferences = this.getSharedPreferences(getString(R.string.string_preference),MODE_PRIVATE)
 
         val sp = preferences.edit()
-        sp.putString(TOKEN, response.Data!!.Token)
-        sp.putString(NOMBREPROVIDER, response.Data!!.Nombre)
-        sp.putInt(PROVIDERID, response.Data!!.ProviderId)
+        sp.putString(getString(R.string.token), response.Data!!.Token)
+        sp.putInt(getString(R.string.personid), response.Data!!.PersonId)
         sp.apply()
 
-        if (preferences.getBoolean(STRING_PREFERENCE, false)) {
-            val localIntent = Intent(this, LocalActivity::class.java)
+        if (preferences.getBoolean(getString(R.string.string_preference), false)) {
+            val localIntent = Intent(this, MainActivity::class.java)
             startActivity(localIntent)
             finish()
         }
 
-        val intento = Intent(this, LocalActivity::class.java)
+        val intento = Intent(this, MainActivity::class.java)
         startActivity(intento)
     }
 
