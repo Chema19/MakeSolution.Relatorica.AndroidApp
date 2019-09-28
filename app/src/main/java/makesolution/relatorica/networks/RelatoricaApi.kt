@@ -4,10 +4,7 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
-import makesolution.relatorica.models.PruchaseModel
-import makesolution.relatorica.responses.LoginResponse
-import makesolution.relatorica.responses.PurchaseResponse
-import makesolution.relatorica.responses.StoreResponse
+import makesolution.relatorica.responses.*
 
 class RelatoricaApi {
     companion object{
@@ -16,27 +13,33 @@ class RelatoricaApi {
         val loginUrlPost = "$baseUrl/loginapi/logins/fathers"
         val buyUrlPost = "$baseUrl/purchasesapi/purchases"
 
+        fun getHistory(historyId:Int):String{
+            return "${RelatoricaApi.historiaUrlGet}/$historyId"
+        }
+
+        //POST
         fun PostCompra(key: String,
                        url: String,
                        padreId: Int,
                        historiaId: Int,
-                       fechaCompra : String,
+                       fechaCompra: String,
                        costo: Double,
-                       responseHandler: (PurchaseResponse?)-> Unit, errorHandler: (ANError?) -> Unit)
+                       responseHandler: (PurchaseHistoryResponse?)-> Unit,
+                       errorHandler: (ANError?) -> Unit)
         {
 
             AndroidNetworking.post(url)
                 .addHeaders("Authorization",key)
-                .addBodyParameter("HistoriaId",historiaId.toString())
                 .addBodyParameter("PadreId",padreId.toString())
+                .addBodyParameter("HistoriaId",historiaId.toString())
                 .addBodyParameter("FechaCompra",fechaCompra)
                 .addBodyParameter("Costo",costo.toString())
                 .setTag("RelatoricaApp")
                 .setPriority(Priority.MEDIUM)
                 .build()
-                .getAsObject(PurchaseResponse::class.java,object : ParsedRequestListener<PurchaseResponse> {
-                    override fun onResponse(response: PurchaseResponse?) {
-                        responseHandler(response)
+                .getAsObject(PurchaseHistoryResponse::class.java,object : ParsedRequestListener<PurchaseHistoryResponse> {
+                    override fun onResponse(historyResponse: PurchaseHistoryResponse?) {
+                        responseHandler(historyResponse)
                     }
 
                     override fun onError(anError: ANError) {
@@ -68,10 +71,11 @@ class RelatoricaApi {
                 })
         }
 
+        //GET
         fun GetHistoriasNormalOrById(key: String,
                          url: String,
                          responseHandler: (StoreResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
-            AndroidNetworking.get(url)
+                AndroidNetworking.get(url)
                 .addHeaders("Authorization", key)
                 .setPriority(Priority.HIGH)
                 .setTag("RelatoricaApp")
@@ -79,6 +83,46 @@ class RelatoricaApi {
                 .getAsObject(StoreResponse::class.java,
                     object : ParsedRequestListener<StoreResponse> {
                         override fun onResponse(response: StoreResponse?) {
+                            responseHandler(response)
+                        }
+
+                        override fun onError(anError: ANError?) {
+                            errorHandler(anError)
+                        }
+                    })
+        }
+
+        fun GetHistoriaById(key: String,
+                            url: String,
+                            responseHandler: (HistoryResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
+            AndroidNetworking.get(url)
+                .addHeaders("Authorization", key)
+                .setPriority(Priority.HIGH)
+                .setTag("RelatoricaApp")
+                .build()
+                .getAsObject(HistoryResponse::class.java,
+                    object : ParsedRequestListener<HistoryResponse> {
+                        override fun onResponse(response: HistoryResponse?) {
+                            responseHandler(response)
+                        }
+
+                        override fun onError(anError: ANError?) {
+                            errorHandler(anError)
+                        }
+                    })
+        }
+
+        fun GetCompra(key: String,
+                                     url: String,
+                                     responseHandler: (PurchaseResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
+            AndroidNetworking.get(url)
+                .addHeaders("Authorization", key)
+                .setPriority(Priority.HIGH)
+                .setTag("RelatoricaApp")
+                .build()
+                .getAsObject(PurchaseResponse::class.java,
+                    object : ParsedRequestListener<PurchaseResponse> {
+                        override fun onResponse(response: PurchaseResponse?) {
                             responseHandler(response)
                         }
 

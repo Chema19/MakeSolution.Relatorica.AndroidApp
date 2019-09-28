@@ -1,14 +1,16 @@
 package makesolution.relatorica.activities
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.androidnetworking.error.ANError
 import kotlinx.android.synthetic.main.content_store.*
 import makesolution.relatorica.R
 import makesolution.relatorica.models.StoreModel
 import makesolution.relatorica.networks.RelatoricaApi
-import makesolution.relatorica.responses.PurchaseResponse
+import makesolution.relatorica.responses.PurchaseHistoryResponse
 
 
 class HistoryActivity : AppCompatActivity() {
@@ -39,16 +41,19 @@ class HistoryActivity : AppCompatActivity() {
         buyButton.setOnClickListener{
             var url: String = RelatoricaApi.buyUrlPost
 
-            RelatoricaApi.PostCompra(token,url,historiaId,usuarioId,"09/18/2019",costo,
+            RelatoricaApi.PostCompra(token,url,usuarioId,historiaId,"09/18/2019",costo,
                 { response -> handleResponse(response) },
                 { error -> handleError(error) })
         }
     }
-    private fun handleResponse(response: PurchaseResponse?){
-        if(true.equals(response!!.Error)){
-            Log.d("Respuesta Falsa", response!!.Message)
+    private fun handleResponse(historyResponse: PurchaseHistoryResponse?){
+        if(true.equals(historyResponse!!.Error)){
+            Log.d("Respuesta Falsa", historyResponse!!.Message)
             return
         }
+        Toast.makeText(this, "Comprra realizada satisfactoriamente.", Toast.LENGTH_SHORT).show()
+        val intento = Intent(this, MainActivity::class.java)
+        startActivity(intento)
     }
 
     private fun handleError(anError: ANError?){

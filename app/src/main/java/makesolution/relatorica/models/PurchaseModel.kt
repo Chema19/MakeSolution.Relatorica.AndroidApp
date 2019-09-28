@@ -2,10 +2,15 @@ package makesolution.relatorica.models
 
 import android.os.Bundle
 
-data class PruchaseModel (val CompraId: Int, val PadreId: Int, val HistoriaId: Int, val FechaCompra: String, val Estado: String, val Costo: Double) {
+data class PurchaseModel (val CompraId: Int,
+                          val PadreId: Int,
+                          val HistoriaId: Int,
+                          val FechaCompra: String,
+                          val Estado: String,
+                          val Costo: Double) {
     companion object{
-        fun from(bundle: Bundle): PruchaseModel{
-            return PruchaseModel(
+        fun from(bundle: Bundle): PurchaseModel{
+            return PurchaseModel(
                 bundle.getInt("CompraId")!!,
                 bundle.getInt("PadreId")!!,
                 bundle.getInt("HistoriaId")!!,
