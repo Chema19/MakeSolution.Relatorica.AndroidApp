@@ -19,6 +19,7 @@
                 android:layout_height="180dp"
                 android:layout_margin="5dp"
                 tools:ignore="MissingConstraints"
+                android:src="@drawable/ic_launcher_background"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -28,6 +29,8 @@
                 android:layout_height="wrap_content"
                 tools:ignore="MissingConstraints"
                 android:text="Nombre_Libro"
+                android:layout_margin="5dp"
+                android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@id/imageANImageView"/>
 
             <TextView
@@ -36,6 +39,8 @@
                 android:layout_height="match_parent"
                 tools:ignore="MissingConstraints"
                 android:text="Precio"
+                android:layout_margin="5dp"
+                android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@id/imageANImageView"
                 app:layout_constraintEnd_toEndOf="parent"/>
 

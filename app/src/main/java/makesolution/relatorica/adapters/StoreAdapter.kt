@@ -37,7 +37,7 @@ class StoreAdapter (var stores:ArrayList<StoreModel>, val context: Context): Rec
             imagenANImageView.setErrorImageResId(R.mipmap.ic_launcher)
             imagenANImageView.setImageUrl(store.Imagen)
             nombreTextView.text = store.Nombre
-            precioTextView.text = store.Precio.toString()
+            precioTextView.text = "S/. " + store.Precio.toString()
         }
     }
 

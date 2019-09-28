@@ -4,7 +4,7 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
-import makesolution.relatorica.responses.GeneralResponse
+import makesolution.relatorica.responses.StoreResponse
 
 class RelatoricaApi {
     companion object{
@@ -12,8 +12,8 @@ class RelatoricaApi {
         var historiaUrlGet = "$baseUrl/historiaapi/histories"
 
         fun PostCompra(key: String, url: String,
-                               customerId: Int,
-                               responseHandler: (GeneralResponse?)-> Unit, errorHandler: (ANError?) -> Unit)
+                       customerId: Int,
+                       responseHandler: (StoreResponse?)-> Unit, errorHandler: (ANError?) -> Unit)
         {
 
             AndroidNetworking.post(url)
@@ -22,8 +22,8 @@ class RelatoricaApi {
                 .setTag("RelatoricaApp")
                 .setPriority(Priority.MEDIUM)
                 .build()
-                .getAsObject(GeneralResponse::class.java,object : ParsedRequestListener<GeneralResponse> {
-                    override fun onResponse(response: GeneralResponse?) {
+                .getAsObject(StoreResponse::class.java,object : ParsedRequestListener<StoreResponse> {
+                    override fun onResponse(response: StoreResponse?) {
                         responseHandler(response)
                     }
 
@@ -33,15 +33,17 @@ class RelatoricaApi {
                 })
         }
 
-        fun GetHistorias(key: String, url: String, responseHandler: (GeneralResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
+        fun GetHistorias(key: String,
+                         url: String,
+                         responseHandler: (StoreResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
             AndroidNetworking.get(url)
                 .addHeaders("Authorization", key)
                 .setPriority(Priority.HIGH)
                 .setTag("RelatoricaApp")
                 .build()
-                .getAsObject(GeneralResponse::class.java,
-                    object : ParsedRequestListener<GeneralResponse> {
-                        override fun onResponse(response: GeneralResponse?) {
+                .getAsObject(StoreResponse::class.java,
+                    object : ParsedRequestListener<StoreResponse> {
+                        override fun onResponse(response: StoreResponse?) {
                             responseHandler(response)
                         }
 

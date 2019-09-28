@@ -2,9 +2,10 @@ package makesolution.relatorica.responses
 
 import makesolution.relatorica.models.StoreModel
 import java.util.*
+import kotlin.collections.ArrayList
 
-class GeneralResponse {
-    val Data: StoreModel? = null
+class StoreResponse {
+    val Data: ArrayList<StoreModel>? = null
     val Error: Boolean = false
     val Message: String? = null
 }
