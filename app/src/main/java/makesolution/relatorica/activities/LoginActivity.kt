@@ -26,6 +26,10 @@ class LoginActivity : AppCompatActivity() {
                 { response -> handleResponse(response) },
                 { error -> handleError(error) })
         }
+        registerButton.setOnClickListener {
+            val intento = Intent(this, ProfileActivity::class.java)
+            startActivity(intento)
+        }
     }
     private fun handleResponse(response: LoginResponse?){
         if(true.equals(response!!.Error)){

@@ -12,10 +12,21 @@ class RelatoricaApi {
         var historiaUrlGet = "$baseUrl/historiaapi/histories"
         val loginUrlPost = "$baseUrl/loginapi/logins/fathers"
         val buyUrlPost = "$baseUrl/purchasesapi/purchases"
+        val fatherUrlPost = "$baseUrl/loginapi/fathers"
 
         fun getHistory(historyId:Int):String{
             return "${RelatoricaApi.historiaUrlGet}/$historyId"
         }
+
+
+        fun getPurchasesByFather(padreId:Int):String{
+            return "${baseUrl}/purchasesapi/fathers/$padreId/purchases"
+        }
+
+        fun getFatherProfile(padreId: Int): String{
+            return "${baseUrl}/fatherapi/fathers/$padreId"
+        }
+
 
         //POST
         fun PostCompra(key: String,
@@ -48,10 +59,43 @@ class RelatoricaApi {
                 })
         }
 
+        fun PostFather(url: String,
+                       nombres:String,
+                       apellidos:String,
+                       credenciales:String,
+                       contrasenia:String,
+                       correo:String,
+                       celular:String,
+                       responseHandler: (FatherResponse?)-> Unit, errorHandler: (ANError?) -> Unit)
+        {
+
+            AndroidNetworking.post(url)
+                .addBodyParameter("Nombres",nombres)
+                .addBodyParameter("Apellidos",apellidos)
+                .addBodyParameter("Credenciales",credenciales)
+                .addBodyParameter("Contrasenia",contrasenia)
+                .addBodyParameter("Correo",correo)
+                .addBodyParameter("Celular",celular)
+                .addBodyParameter("Estado","ACT")
+                .addBodyParameter("FechaNacimiento","09/18/2019")
+                .setTag("RelatoricaApp")
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsObject(FatherResponse::class.java,object : ParsedRequestListener<FatherResponse> {
+                    override fun onResponse(response: FatherResponse?) {
+                        responseHandler(response)
+                    }
+
+                    override fun onError(anError: ANError) {
+                        errorHandler(anError)
+                    }
+                })
+        }
+
         fun PostLogin(url: String,
-                       credenciales: String,
-                        contrasenia:String,
-                       responseHandler: (LoginResponse?)-> Unit, errorHandler: (ANError?) -> Unit)
+                      credenciales: String,
+                      contrasenia:String,
+                      responseHandler: (LoginResponse?)-> Unit, errorHandler: (ANError?) -> Unit)
         {
 
             AndroidNetworking.post(url)
@@ -123,6 +167,26 @@ class RelatoricaApi {
                 .getAsObject(PurchaseResponse::class.java,
                     object : ParsedRequestListener<PurchaseResponse> {
                         override fun onResponse(response: PurchaseResponse?) {
+                            responseHandler(response)
+                        }
+
+                        override fun onError(anError: ANError?) {
+                            errorHandler(anError)
+                        }
+                    })
+        }
+
+        fun GetFatherById(key: String,
+                            url: String,
+                            responseHandler: (FatherProfileResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
+            AndroidNetworking.get(url)
+                .addHeaders("Authorization", key)
+                .setPriority(Priority.HIGH)
+                .setTag("RelatoricaApp")
+                .build()
+                .getAsObject(FatherProfileResponse::class.java,
+                    object : ParsedRequestListener<FatherProfileResponse> {
+                        override fun onResponse(response: FatherProfileResponse?) {
                             responseHandler(response)
                         }
 

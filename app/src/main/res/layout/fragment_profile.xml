@@ -5,10 +5,98 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.constraint.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/title_profile" />
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/pictureProfileImageView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            tools:ignore="MissingConstraints"
+            android:src="@drawable/img_profile"
+            android:layout_marginEnd="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/nombreViewEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombres"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toBottomOf="@id/pictureProfileImageView"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/apellidoViewEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Apellidos"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toBottomOf="@id/nombreViewEditText"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/credencialesViewEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Usuario"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toBottomOf="@id/apellidoViewEditText"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/correoViewEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Correo electrónico"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toBottomOf="@id/credencialesViewEditText"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/celularViewEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Número de celular"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toBottomOf="@id/correoViewEditText"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/editarProfileButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Editar"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toBottomOf="@id/celularViewEditText"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/filename_yellow"
+            android:textColor="@color/textPrimary"/>
+    </android.support.constraint.ConstraintLayout>
 
 </FrameLayout>

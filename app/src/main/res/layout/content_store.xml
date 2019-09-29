@@ -74,7 +74,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/filename"
         android:textColor="@color/cardview_light_background" />
 
 

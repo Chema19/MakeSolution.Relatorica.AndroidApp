@@ -46,8 +46,8 @@ class BookFragment : Fragment() {
 
         val result = this.activity!!.getSharedPreferences(getString(R.string.string_preference), AppCompatActivity.MODE_PRIVATE)
         var token = "Bearer " + result.getString(getString(R.string.token), "")
-
-        var url: String = RelatoricaApi.buyUrlPost
+        var padreId =  result.getInt(getString(R.string.personid),0)
+        var url: String = RelatoricaApi.getPurchasesByFather(padreId)
 
         RelatoricaApi.GetCompra(token, url,
             { response -> handleResponse(response) },
