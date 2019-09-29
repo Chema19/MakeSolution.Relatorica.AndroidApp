@@ -49,6 +49,7 @@ class ParagraphActivity : AppCompatActivity() {
         var token = "Bearer " + result.getString(getString(R.string.token), "")
         var usuarioId = result.getInt(getString(R.string.personid), 0)
         var historiaId = history.HistoriaId
+        titleTextView.text = history.Nombre
 
         var url: String = RelatoricaApi.getParagraph(historiaId)
 
