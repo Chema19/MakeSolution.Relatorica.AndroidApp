@@ -31,6 +31,10 @@ class RelatoricaApi {
             return "${baseUrl}/paragraphsapi/histories/$historiaId/paragraphs"
         }
 
+        fun getSonidoById(sonidoId: Int): String{
+            return "${baseUrl}/soundsapi/sounds/$sonidoId"
+        }
+
 
         //POST
         fun PostCompra(key: String,
@@ -220,5 +224,24 @@ class RelatoricaApi {
                     })
         }
 
+        fun GetSoundById(key: String,
+                         url: String,
+                         responseHandler: (SoundResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
+            AndroidNetworking.get(url)
+                .addHeaders("Authorization", key)
+                .setPriority(Priority.HIGH)
+                .setTag("RelatoricaApp")
+                .build()
+                .getAsObject(SoundResponse::class.java,
+                    object : ParsedRequestListener<SoundResponse> {
+                        override fun onResponse(response: SoundResponse?) {
+                            responseHandler(response)
+                        }
+
+                        override fun onError(anError: ANError?) {
+                            errorHandler(anError)
+                        }
+                    })
+        }
     }
 }

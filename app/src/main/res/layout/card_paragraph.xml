@@ -41,6 +41,25 @@
         app:layout_constraintTop_toBottomOf="@id/nameTextView"
         android:gravity="center"/>
 
+        <ImageView
+            android:id="@+id/playImageView"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            tools:ignore="MissingConstraints"
+            android:src="@drawable/ic_play_circle_outline_black_24dp"
+            app:layout_constraintTop_toBottomOf="@id/textoTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"/>
+        <ImageView
+            android:id="@+id/stopImageView"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            tools:ignore="MissingConstraints"
+            android:src="@drawable/ic_stop_black_24dp"
+            app:layout_constraintTop_toBottomOf="@id/textoTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"/>
+
 
     </android.support.constraint.ConstraintLayout>
 

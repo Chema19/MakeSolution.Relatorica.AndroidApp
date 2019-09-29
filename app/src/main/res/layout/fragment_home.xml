@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textSize="15dp"
-            android:text="Una ApplicaciÃ³n de cuentos para padres" />
+            android:text="Una Applicación de cuentos para padres" />
 
         <ImageView
             android:layout_marginTop="20dp"
@@ -41,6 +41,7 @@
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:onClick="onYoutube"
+            android:background="@drawable/filename_yellow"
             android:text="Ir a tutoriales"/>
 
     </LinearLayout>
