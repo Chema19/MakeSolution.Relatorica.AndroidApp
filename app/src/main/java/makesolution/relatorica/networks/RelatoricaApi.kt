@@ -27,6 +27,10 @@ class RelatoricaApi {
             return "${baseUrl}/fatherapi/fathers/$padreId"
         }
 
+        fun getParagraph(historiaId: Int): String{
+            return "${baseUrl}/paragraphsapi/histories/$historiaId/paragraphs"
+        }
+
 
         //POST
         fun PostCompra(key: String,
@@ -187,6 +191,26 @@ class RelatoricaApi {
                 .getAsObject(FatherProfileResponse::class.java,
                     object : ParsedRequestListener<FatherProfileResponse> {
                         override fun onResponse(response: FatherProfileResponse?) {
+                            responseHandler(response)
+                        }
+
+                        override fun onError(anError: ANError?) {
+                            errorHandler(anError)
+                        }
+                    })
+        }
+
+        fun GetParagraphByHistory(key: String,
+                          url: String,
+                          responseHandler: (ParagraphResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
+            AndroidNetworking.get(url)
+                .addHeaders("Authorization", key)
+                .setPriority(Priority.HIGH)
+                .setTag("RelatoricaApp")
+                .build()
+                .getAsObject(ParagraphResponse::class.java,
+                    object : ParsedRequestListener<ParagraphResponse> {
+                        override fun onResponse(response: ParagraphResponse?) {
                             responseHandler(response)
                         }
 

@@ -13,7 +13,10 @@ import com.androidnetworking.error.ANError
 import kotlinx.android.synthetic.main.card_purchase.view.*
 import makesolution.relatorica.R
 import makesolution.relatorica.activities.HistoryActivity
+import makesolution.relatorica.activities.ParagraphActivity
+import makesolution.relatorica.models.ParagraphModel
 import makesolution.relatorica.models.PurchaseModel
+import makesolution.relatorica.models.StoreModel
 import makesolution.relatorica.networks.RelatoricaApi
 import makesolution.relatorica.responses.HistoryResponse
 import makesolution.relatorica.responses.PurchaseResponse
@@ -62,9 +65,11 @@ class PurchaseAdapter(var purchases:ArrayList<PurchaseModel>, val context: Conte
             nombreTextView.text = response.Data!!.Nombre
             purchaseCardView.setOnClickListener { view ->
                 val context = view.context
+                var history = StoreModel(response.Data.HistoriaId,response.Data.Nombre,response.Data.UsuarioId,response.Data.NombreUsuario,response.Data.Argumento,response.Data.FechaRegistro,response.Data.Estado,response.Data.Precio,response.Data.Editorial,response.Data.Imagen)
+
                 context.startActivity(
-                   Intent(context, HistoryActivity::class.java)
-                       .putExtras(response.Data.toBundle()))
+                   Intent(context, ParagraphActivity::class.java)
+                       .putExtras(history.toBundle()))
             }
         }
 
