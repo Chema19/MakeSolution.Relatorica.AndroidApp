@@ -1,10 +1,14 @@
 <resources>
-    <string name="app_name">AndroidAppRelatorica</string>
+    <string name="app_name">Relatórica</string>
     <string name="title_home">Home</string>
     <string name="title_my_books">My books</string>
     <string name="title_childs">Childs</string>
     <string name="title_profile">Profile</string>
     <string name="title_store">Store</string>
+
+    <string name="token">Token</string>
+    <string name="string_preference">Session</string>
+    <string name="personid">PersonId</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

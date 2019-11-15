@@ -1,10 +1,12 @@
 package makesolution.relatorica.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.view.MenuItem
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import makesolution.relatorica.R
 import makesolution.relatorica.fragments.*
@@ -51,4 +53,10 @@ class MainActivity : AppCompatActivity() {
             .commit() > 0
 
     }
+    fun onYoutube(view: View){
+        val intent = Intent(this, HomeTutorialActivity::class.java)
+        startActivity(intent)
+
+    }
+
 }

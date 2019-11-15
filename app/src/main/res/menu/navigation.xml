@@ -6,18 +6,18 @@
         android:title="@string/title_home"/>
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_person_black_24dp"
         android:title="@string/title_profile"/>
     <item
         android:id="@+id/navigation_store"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_local_grocery_store_black_24dp"
         android:title="@string/title_store"/>
     <item
         android:id="@+id/navigation_my_books"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_import_contacts_black_24dp"
         android:title="@string/title_my_books"/>
     <item
         android:id="@+id/navigation_childs"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_people_black_24dp"
         android:title="@string/title_childs"/>
 </menu>
