@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import com.androidnetworking.error.ANError
 import kotlinx.android.synthetic.main.activity_edit_child.*
+import kotlinx.android.synthetic.main.card_child.*
 import makesolution.relatorica.R
 import makesolution.relatorica.models.ChildModel
 import makesolution.relatorica.networks.RelatoricaApi
@@ -18,11 +19,10 @@ class EditChildActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_child)
-
+        //var childId=intent.extras.getBundle("HijoId").toString().toInt()
         editChildTextView.setOnClickListener {
             val result = this!!.getSharedPreferences(getString(R.string.string_preference), AppCompatActivity.MODE_PRIVATE)
             var token = "Bearer " + result.getString(getString(R.string.token), "")
-            var childId=intent.extras.getBundle("HijoId").toString().toInt()
             var padreId =  result.getInt(getString(R.string.personid),0)
             var url:String=RelatoricaApi.childUrlPost
             var childNameET:String=nombreCompletoEditText.text.toString()

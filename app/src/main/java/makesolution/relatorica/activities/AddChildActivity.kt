@@ -39,7 +39,6 @@ class AddChildActivity : AppCompatActivity() {
             Log.d("Respuesta Falsa", response!!.Message)
             return
         }
-
         val intento = Intent(this, MainActivity::class.java)
         startActivity(intento)
     }

@@ -67,7 +67,7 @@ class ChildFragment : Fragment() {
         childAdapter.childs = childs
         childAdapter.notifyDataSetChanged()
         addChildFloatingActionButton.setOnClickListener {
-            var i=Intent(context, EditChildActivity::class.java)
+            var i=Intent(context, AddChildActivity::class.java)
             startActivity(i)
         }
     }
