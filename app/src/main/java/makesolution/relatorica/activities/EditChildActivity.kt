@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.util.Log
 import com.androidnetworking.error.ANError
 import kotlinx.android.synthetic.main.activity_edit_child.*
-import kotlinx.android.synthetic.main.card_child.*
 import makesolution.relatorica.R
 import makesolution.relatorica.models.ChildModel
 import makesolution.relatorica.networks.RelatoricaApi
+import makesolution.relatorica.responses.ChildProfileResponse
 import makesolution.relatorica.responses.ChildResponse
 import java.text.SimpleDateFormat
 import java.util.*
@@ -19,10 +19,18 @@ class EditChildActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_child)
-        //var childId=intent.extras.getBundle("HijoId").toString().toInt()
+        var childId=intent.getIntExtra("HijoId",0)
+        nombreCompletoEditText.setText(intent.getStringExtra("NombreCompleto"))
+        fechaNacimientoEditText.setText(intent.getStringExtra("FechaNacimiento"))
+        val result = this!!.getSharedPreferences(getString(R.string.string_preference), AppCompatActivity.MODE_PRIVATE)
+        var token = "Bearer " + result.getString(getString(R.string.token), "")
+        deleteChildTextView.setOnClickListener {
+            var urlDelete:String=RelatoricaApi.deleteChildById(childId)
+            RelatoricaApi.DeleteChild(token, urlDelete,
+                { response -> deleteHandleResponse(response) },
+                { error -> handleError(error)})
+        }
         editChildTextView.setOnClickListener {
-            val result = this!!.getSharedPreferences(getString(R.string.string_preference), AppCompatActivity.MODE_PRIVATE)
-            var token = "Bearer " + result.getString(getString(R.string.token), "")
             var padreId =  result.getInt(getString(R.string.personid),0)
             var url:String=RelatoricaApi.childUrlPost
             var childNameET:String=nombreCompletoEditText.text.toString()
@@ -31,8 +39,16 @@ class EditChildActivity : AppCompatActivity() {
             var df=SimpleDateFormat("yyyy-MMM-dd")
             var formattedDate=df.format(c)
             var child=ChildModel(NombreCompleto = childNameET,FechaNacimiento = birthDateET,Estado ="",FechaRegistro = formattedDate,HijoId = childId,PadreId = padreId)
-            RelatoricaApi.PostChild(url,child,token,{ response -> handleResponse(response) },
+            RelatoricaApi.PutChild(url,child,token,{
+                    response -> handleResponse(response) },
                 { error -> handleError(error) })
+        }
+
+    }
+    private fun deleteHandleResponse(response: ChildProfileResponse?){
+        if(true.equals(response!!.Error)){
+            Log.d("Respuesta Falsa", response!!.Message)
+            return
         }
     }
     private fun handleResponse(response: ChildResponse?){
@@ -40,8 +56,6 @@ class EditChildActivity : AppCompatActivity() {
             Log.d("Respuesta Falsa", response!!.Message)
             return
         }
-        val intento = Intent(this, MainActivity::class.java)
-        startActivity(intento)
     }
 
     private fun handleError(anError: ANError?){

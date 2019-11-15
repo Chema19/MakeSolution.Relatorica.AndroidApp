@@ -41,8 +41,9 @@ class ChildAdapter(var childs:ArrayList<ChildModel>, val context: Context): Recy
             val result =  context.getSharedPreferences(context.getString(R.string.string_preference), Context.MODE_PRIVATE) //this.activity!!.getSharedPreferences(getString(R.string.string_preference), AppCompatActivity.MODE_PRIVATE)
             var token = "Bearer " + result.getString(context.getString(R.string.token), "")
             var url: String = RelatoricaApi.getChildById(child.HijoId)
-            //childNameTextView.text = child.NombreCompleto
-            //birthDateTextVIew.text=child.FechaNacimiento
+            childNameTextView.text = child.NombreCompleto
+
+            birthDateTextVIew.text=child.FechaNacimiento
             RelatoricaApi.GetChildById(token, url,
                 { response -> handleResponse(response) },
                 { error -> handleError(error)})

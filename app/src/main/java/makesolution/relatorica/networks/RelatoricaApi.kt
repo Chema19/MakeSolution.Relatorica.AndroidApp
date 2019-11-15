@@ -42,6 +42,29 @@ class RelatoricaApi {
         fun getChildsByFather(fatherId: Int):String{
             return "${baseUrl}/childapi/fathers/$fatherId/childs"
         }
+        fun deleteChildById(childId: Int):String{
+            return "${baseUrl}/childapi/childs/$childId"
+        }
+        //Delete
+        fun DeleteChild(key: String,
+                        url: String,
+                        responseHandler: (ChildProfileResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
+            AndroidNetworking.delete(url)
+                .addHeaders("Authorization", key)
+                .setPriority(Priority.HIGH)
+                .setTag("RelatoricaApp")
+                .build()
+                .getAsObject(ChildProfileResponse::class.java,
+                    object : ParsedRequestListener<ChildProfileResponse> {
+                        override fun onResponse(response: ChildProfileResponse?) {
+                            responseHandler(response)
+                        }
+
+                        override fun onError(anError: ANError?) {
+                            errorHandler(anError)
+                        }
+                    })
+        }
         //POST
         fun PostCompra(key: String,
                        url: String,
@@ -133,6 +156,30 @@ class RelatoricaApi {
         {
 
             AndroidNetworking.post(url)
+                .addHeaders("Authorization", key)
+                .addBodyParameter("NombreCompleto",child.NombreCompleto)
+                .addBodyParameter("Estado",child.Estado)
+                .addBodyParameter("FechaRegistro",child.FechaRegistro)
+                .addBodyParameter("FechaNacimiento",child.FechaNacimiento)
+                .addBodyParameter("PadreId",child.PadreId.toString())
+                .setTag("RelatoricaApp")
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsObject(ChildResponse::class.java,object : ParsedRequestListener<ChildResponse> {
+                    override fun onResponse(response: ChildResponse?) {
+                        responseHandler(response)
+                    }
+
+                    override fun onError(anError: ANError) {
+                        errorHandler(anError)
+                    }
+                })
+        }
+        fun PutChild(url: String,child:ChildModel,key:String,
+                      responseHandler: (ChildResponse?)-> Unit, errorHandler: (ANError?) -> Unit)
+        {
+
+            AndroidNetworking.put(url)
                 .addHeaders("Authorization", key)
                 .addBodyParameter("NombreCompleto",child.NombreCompleto)
                 .addBodyParameter("Estado",child.Estado)
@@ -330,6 +377,7 @@ class RelatoricaApi {
                     })
 
         }
+
 
 
 
