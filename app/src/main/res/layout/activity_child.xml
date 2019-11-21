@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_addChild"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agregar Hijo"
+        tools:layout_editor_absoluteX="272dp"
+        tools:layout_editor_absoluteY="38dp" />
+
+    <ListView
+        android:id="@+id/listChild"
+        android:layout_width="367dp"
+        android:layout_height="582dp"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="110dp" />
+
+    <TextView
+        android:id="@+id/txt_Child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HIJOS"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="38dp" />
+
+</android.support.constraint.ConstraintLayout>
