@@ -1,4 +1,5 @@
 package makesolution.relatorica.activities
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -45,7 +46,11 @@ class ParagraphActivity : AppCompatActivity() {
         titleTextView.text = history.Nombre
 
         var url: String = RelatoricaApi.getParagraph(historiaId)
-
+        activitiesButton.setOnClickListener {
+            startActivity(
+                Intent(this,QuestionActivity::class.java)
+            )
+        }
         RelatoricaApi.GetParagraphByHistory(token,url,
                { response -> handleResponse(response) },
                { error -> handleError(error) })

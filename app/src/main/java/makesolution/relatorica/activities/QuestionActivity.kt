@@ -22,7 +22,7 @@ class QuestionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
-
+        questions=ArrayList()
         questionRecyclerView=findViewById(R.id.questionsRecyclerView)
         questionRecyclerView.layoutManager=LinearLayoutManager(this,LinearLayout.VERTICAL,false)
         questionAdapter=QuestionAdapter(questions = questions, context = this)
