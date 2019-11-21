@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.Toast
 import com.androidnetworking.error.ANError
 import kotlinx.android.synthetic.main.content_store.*
@@ -58,11 +59,14 @@ class HistoryActivity : AppCompatActivity() {
         //Toast.makeText(this, "Comprra realizada satisfactoriamente.", Toast.LENGTH_SHORT).show()
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.dialog_purchase)
+        val continueButton=dialog.findViewById<Button>(R.id.continueButton)
+        continueButton.setOnClickListener {
+            dialog.dismiss()
+            val intento = Intent(this, MainActivity::class.java)
+            startActivity(intento)
+        }
         dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
-
-        val intento = Intent(this, MainActivity::class.java)
-        startActivity(intento)
     }
 
     private fun handleError(anError: ANError?){
