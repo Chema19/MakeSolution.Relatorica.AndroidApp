@@ -30,11 +30,9 @@ class QuestionAdapter (var questions:ArrayList<QuestionModel>, val context: Cont
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
         val enunciadoTextView = view.enunciadoTextView
-        val fechaRegistroTextVIew=view.fechaRegistroTextView
 
         fun updateFrom(context: Context, question: QuestionModel){
             enunciadoTextView.text=question.Enunciado
-            fechaRegistroTextVIew.text=question.FechaRegistro
         }
     }
 }

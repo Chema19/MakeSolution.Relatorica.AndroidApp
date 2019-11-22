@@ -22,14 +22,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         navigation.setOnNavigationItemSelectedListener (mOnNavigationItemSelectedListener)
-        navigation.selectedItemId = R.id.navigation_home
+        navigation.selectedItemId = R.id.navigation_store
 
     }
     private fun fragmentFor(item: MenuItem) : Fragment {
         when(item.itemId){
+            /*
             R.id.navigation_home -> {
                 return HomeFragment()
-            }
+            }*/
             R.id.navigation_childs -> {
                 return ChildFragment()
             }
@@ -39,9 +40,10 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_store -> {
                 return StoreFragment()
             }
+            /*
             R.id.navigation_profile -> {
                 return ProfileFragment()
-            }
+            }*/
         }
         return HomeFragment()
     }

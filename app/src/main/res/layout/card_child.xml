@@ -25,19 +25,10 @@
             android:id="@+id/childNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/birthDateTextView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:text="TextView" />
 
-        <TextView
-            android:id="@+id/birthDateTextView"
-            app:layout_constraintTop_toBottomOf="@id/childNameTextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.CardView>

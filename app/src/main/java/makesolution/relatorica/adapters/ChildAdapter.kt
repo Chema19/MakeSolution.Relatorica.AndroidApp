@@ -34,7 +34,6 @@ class ChildAdapter(var childs:ArrayList<ChildModel>, val context: Context): Recy
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
         val childNameTextView = view.childNameTextView
-        val birthDateTextVIew=view.birthDateTextView
         val childCardView=view.childCardView
         fun updateFrom(context: Context, child: ChildModel){
 
@@ -42,8 +41,6 @@ class ChildAdapter(var childs:ArrayList<ChildModel>, val context: Context): Recy
             var token = "Bearer " + result.getString(context.getString(R.string.token), "")
             var url: String = RelatoricaApi.getChildById(child.HijoId)
             childNameTextView.text = child.NombreCompleto
-
-            birthDateTextVIew.text=child.FechaNacimiento
             RelatoricaApi.GetChildById(token, url,
                 { response -> handleResponse(response) },
                 { error -> handleError(error)})
@@ -55,7 +52,6 @@ class ChildAdapter(var childs:ArrayList<ChildModel>, val context: Context): Recy
                 return
             }
             childNameTextView.text = response.Data!!.NombreCompleto
-            birthDateTextVIew.text=response.Data!!.FechaNacimiento
             childCardView.setOnClickListener { view ->
                 val context = view.context
                 var child = ChildModel(response.Data.HijoId,response.Data.NombreCompleto,response.Data.Estado,response.Data.FechaRegistro,response.Data.FechaNacimiento,response.Data.PadreId)
