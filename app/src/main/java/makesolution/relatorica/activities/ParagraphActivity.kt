@@ -1,5 +1,7 @@
 package makesolution.relatorica.activities
 import android.content.Intent
+import android.media.AudioManager
+import android.media.MediaPlayer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -8,9 +10,11 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import com.androidnetworking.error.ANError
 import kotlinx.android.synthetic.main.activity_paragraph.*
+import kotlinx.android.synthetic.main.card_paragraph.*
 import makesolution.relatorica.R
 import makesolution.relatorica.adapters.ParagraphAdapter
 import makesolution.relatorica.models.ParagraphModel
+import makesolution.relatorica.models.SoundModel
 import makesolution.relatorica.models.StoreModel
 import makesolution.relatorica.networks.RelatoricaApi
 import makesolution.relatorica.responses.ParagraphResponse
@@ -21,10 +25,13 @@ class ParagraphActivity : AppCompatActivity() {
     lateinit var paragraphAdapter: ParagraphAdapter
     lateinit var paragraphLayoutManager: RecyclerView.LayoutManager
     lateinit var linearLayoutManager: LinearLayoutManager
+    lateinit var mediaPlayer: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_paragraph)
+
+
 
         linearLayoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         //**********
@@ -44,6 +51,8 @@ class ParagraphActivity : AppCompatActivity() {
         var usuarioId = result.getInt(getString(R.string.personid), 0)
         var historiaId = history.HistoriaId
         titleTextView.text = history.Nombre
+
+
 
         var url: String = RelatoricaApi.getParagraph(historiaId)
         activitiesButton.setOnClickListener {
