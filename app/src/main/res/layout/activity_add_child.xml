@@ -33,11 +33,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:ems="10"
-                android:hint="Child Name"
+                android:hint="Nombre del Niño"
                 android:inputType="textPersonName"
                 app:layout_constraintBottom_toTopOf="@id/fechaNacimientoEditText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:drawableLeft="@drawable/child"
                 app:layout_constraintTop_toBottomOf="@id/fatherNameTextView" />
 
             <EditText
@@ -47,11 +48,12 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:ems="10"
-                android:hint="Birth Date"
+                android:hint="Fecha de Nacimiento"
                 android:inputType="date"
                 app:layout_constraintBottom_toTopOf="@id/addChildTextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:drawableLeft="@drawable/calendar"
                 app:layout_constraintTop_toBottomOf="@id/nombreCompletoEditText" />
 
             <TextView
@@ -60,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="24dp"
-                android:text="Add"
+                android:background="@drawable/add"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />

@@ -18,7 +18,7 @@
             android:layout_marginEnd="50dp"
             android:layout_marginStart="50dp"
             android:layout_marginTop="50dp"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/nombreViewEditText"
@@ -32,7 +32,8 @@
             android:layout_marginTop="30dp"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:gravity="center"/>
+            android:drawableLeft="@drawable/name"
+            android:gravity="center" />
         <TextView
             android:id="@+id/apellidoViewEditText"
             android:layout_width="match_parent"
@@ -45,7 +46,8 @@
             android:layout_marginTop="15dp"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:gravity="center"/>
+            android:drawableLeft="@drawable/name"
+            android:gravity="center" />
         <TextView
             android:id="@+id/credencialesViewEditText"
             android:layout_width="match_parent"
@@ -58,7 +60,8 @@
             android:layout_marginTop="15dp"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:gravity="center"/>
+            android:drawableLeft="@drawable/avatar"
+            android:gravity="center" />
         <TextView
             android:id="@+id/correoViewEditText"
             android:layout_width="match_parent"
@@ -71,6 +74,7 @@
             android:layout_marginTop="15dp"
             android:textSize="20dp"
             android:textStyle="bold"
+            android:drawableLeft="@drawable/email"
             android:gravity="center"/>
         <TextView
             android:id="@+id/celularViewEditText"
@@ -84,7 +88,8 @@
             android:layout_marginTop="15dp"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:gravity="center"/>
+            android:drawableLeft="@drawable/phone"
+            android:gravity="center" />
         <Button
             android:id="@+id/editarProfileButton"
             android:layout_width="match_parent"

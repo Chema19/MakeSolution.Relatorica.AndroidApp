@@ -33,11 +33,12 @@ tools:context=".activities.EditChildActivity">
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:hint="Child Name"
+            android:hint="Cambia el nombre"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@id/fechaNacimientoEditText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:drawableLeft="@drawable/child"
             app:layout_constraintTop_toBottomOf="@id/fatherNameTextView" />
 
         <EditText
@@ -47,11 +48,12 @@ tools:context=".activities.EditChildActivity">
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:ems="10"
-            android:hint="Birth Date"
+            android:hint="Cambia la fecha"
             android:inputType="date"
             app:layout_constraintBottom_toTopOf="@id/editChildTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:drawableLeft="@drawable/calendar"
             app:layout_constraintTop_toBottomOf="@id/nombreCompletoEditText" />
 
         <TextView
@@ -60,10 +62,9 @@ tools:context=".activities.EditChildActivity">
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
-            android:text="Edit"
-            android:textSize="20dp"
+            android:background="@drawable/edit"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
             android:id="@+id/deleteChildTextView"
@@ -71,10 +72,9 @@ tools:context=".activities.EditChildActivity">
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginBottom="24dp"
-            android:text="Delete"
-            android:textSize="20dp"
+            android:background="@drawable/delete"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"/>
     </android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.CardView>
