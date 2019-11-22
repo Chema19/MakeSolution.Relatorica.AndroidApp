@@ -7,6 +7,7 @@ import android.util.Log
 import com.androidnetworking.error.ANError
 import kotlinx.android.synthetic.main.activity_edit_child.*
 import makesolution.relatorica.R
+import makesolution.relatorica.fragments.ChildFragment
 import makesolution.relatorica.models.ChildModel
 import makesolution.relatorica.networks.RelatoricaApi
 import makesolution.relatorica.responses.ChildProfileResponse
@@ -50,15 +51,20 @@ class EditChildActivity : AppCompatActivity() {
             Log.d("Respuesta Falsa", response!!.Message)
             return
         }
+        finish()
     }
     private fun handleResponse(response: ChildResponse?){
         if(true.equals(response!!.Error)){
             Log.d("Respuesta Falsa", response!!.Message)
             return
         }
+        finish()
     }
 
     private fun handleError(anError: ANError?){
         Log.d("Respuesta Falsa", anError!!.message)
+        val intento = Intent(this, MainActivity::class.java)
+        startActivity(intento)
+        finish()
     }
 }

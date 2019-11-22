@@ -13,6 +13,8 @@ import makesolution.relatorica.networks.RelatoricaApi
 import makesolution.relatorica.responses.ChildResponse
 import java.text.SimpleDateFormat
 import java.util.*
+import makesolution.relatorica.fragments.ChildFragment
+
 
 class AddChildActivity : AppCompatActivity() {
 
@@ -39,11 +41,12 @@ class AddChildActivity : AppCompatActivity() {
             Log.d("Respuesta Falsa", response!!.Message)
             return
         }
-        val intento = Intent(this, MainActivity::class.java)
-        startActivity(intento)
     }
 
     private fun handleError(anError: ANError?){
         Log.d("Respuesta Falsa", anError!!.message)
+        val intento = Intent(this, MainActivity::class.java)
+        startActivity(intento)
+        finish()
     }
 }
