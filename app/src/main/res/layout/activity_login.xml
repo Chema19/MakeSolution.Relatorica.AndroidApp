@@ -15,7 +15,7 @@
         android:layout_marginStart="50dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
-        android:src="@drawable/img"/>
+        android:src="@drawable/logo"/>
     <EditText
         android:id="@+id/userEditText"
         android:layout_width="match_parent"
@@ -24,6 +24,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
+        android:drawableLeft="@drawable/avatar"
         android:hint="Usuario"/>
     <EditText
         android:id="@+id/passwordEditText"
@@ -33,7 +34,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:hint="Contraseña"/>
+        android:drawableLeft="@drawable/key"
+        android:hint="Contraseña"
+        android:padding="10dp"/>
 
     <Button
         android:id="@+id/startButton"
@@ -44,8 +47,9 @@
         app:layout_constraintTop_toBottomOf="@id/passwordEditText"
         android:layout_marginTop="20dp"
         android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/filename"/>
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/filename"
+        android:padding="10dp"/>
 
     <Button
         android:id="@+id/registerButton"
@@ -57,6 +61,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:background="@drawable/filename_yellow"/>
+        android:background="@drawable/filename_yellow"
+        android:padding="10dp"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         tools:ignore="MissingConstraints"
-        android:src="@drawable/img_profile"
+        android:src="@drawable/register"
         android:layout_marginEnd="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
@@ -26,7 +26,9 @@
         app:layout_constraintTop_toBottomOf="@id/pictureProfileImageView"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+        android:drawableLeft="@drawable/name"
+        android:padding="20dp"/>
     <EditText
         android:id="@+id/apellidoEditText"
         android:layout_width="match_parent"
@@ -36,7 +38,9 @@
         app:layout_constraintTop_toBottomOf="@id/nombreEditText"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:drawableLeft="@drawable/name"
+        android:padding="20dp"/>
     <EditText
         android:id="@+id/credencialesEditText"
         android:layout_width="match_parent"
@@ -46,7 +50,9 @@
         app:layout_constraintTop_toBottomOf="@id/apellidoEditText"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:drawableLeft="@drawable/avatar"
+        android:padding="20dp"/>
     <EditText
         android:id="@+id/contraseniaEditText"
         android:layout_width="match_parent"
@@ -56,7 +62,9 @@
         app:layout_constraintTop_toBottomOf="@id/credencialesEditText"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:drawableLeft="@drawable/key"
+        android:padding="20dp"/>
     <EditText
         android:id="@+id/correoEditText"
         android:layout_width="match_parent"
@@ -66,7 +74,9 @@
         app:layout_constraintTop_toBottomOf="@id/contraseniaEditText"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:drawableLeft="@drawable/email"
+        android:padding="20dp"/>
     <EditText
         android:id="@+id/celularEditText"
         android:layout_width="match_parent"
@@ -76,7 +86,9 @@
         app:layout_constraintTop_toBottomOf="@id/correoEditText"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:drawableLeft="@drawable/phone"
+        android:padding="20dp"/>
     <Button
         android:id="@+id/registerProfileButton"
         android:layout_width="match_parent"
